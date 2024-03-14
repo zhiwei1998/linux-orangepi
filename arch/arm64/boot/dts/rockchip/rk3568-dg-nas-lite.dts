@@ -15,6 +15,10 @@
     model = "Rockchip RK3568 DG NAS LITE";
 	compatible = "rockchip,DG-nas-lite", "rockchip,rk3568";
 
+	chosen: chosen {
+		bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=ttyS2,1500000";
+	};
+
 	vcc_phy: vcc-phy-regulator {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc_phy";
