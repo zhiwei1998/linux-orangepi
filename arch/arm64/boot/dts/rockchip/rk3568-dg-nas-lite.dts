@@ -547,23 +547,16 @@ key 64    TV_MEDIA_PLAY
 
 &spi3 {
 	status = "okay";
-	pinctrl-names = "default";
-	pinctrl-0 = <&spi3m1_cs0 &spi3m1_pins >;
-//	pinctrl-1 = <&spi3m1_cs0 &spi3m1_pins_hs>;
-	st7789v@0 {
-			status = "okay";
-            compatible = "sitronix,st7789v";
-            reg = <0>;
-            spi-max-frequency = <12000000>;           
-			bgr;
-            fps = <30>;
-			rotate = <90>;
-            buswidth = <8>; 
-			dc-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;  
-            reset-gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_LOW>; 
-            led-gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_LOW>;           
-            debug = <0>; //等级0～7 越高信息越多
-       };
+	//assigned-clock-rates = <200000000>; //默认不用配置，SPI 设备工作时钟
+	max-freq = <48000000>; /* spi internal clk, don't modify */
+	//dma-names = "tx","rx"; //使能DMA模式
+	//rx-sample-delay-ns = <10>; //默认不用配置，读采样延时
+	spi_dev@0 {
+		compatible = "rockchip,spidev";
+		reg = <0>;
+		spi-max-frequency = <12000000>;
+		spi-lsb-first; //IO 先传输 lsb
+	};
 };
 
 &pwm7 {
