@@ -16,7 +16,7 @@
 	compatible = "rockchip,DG-nas-lite", "rockchip,rk3568";
 
 	chosen: chosen {
-		bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=ttyS2,1500000";
+		bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=ttyS2,1500000 mem_freq_limit=1056";
 	};
 
 	vcc_phy: vcc-phy-regulator {
