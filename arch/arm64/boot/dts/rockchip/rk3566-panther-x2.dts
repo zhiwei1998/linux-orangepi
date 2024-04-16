@@ -666,6 +666,7 @@
 };
 
 &i2c3 {
+    status = "okay";
     compatible = "i2c-gpio";
     gpios = <&pio 0 120 0>, <&pio 0 121 0>; // SDA, SCL
     i2c-gpio,sda-open-drain;
