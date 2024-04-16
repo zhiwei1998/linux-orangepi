@@ -104,16 +104,6 @@
         };
     };
 
-    i2c_gpio: i2c_gpio {
-        compatible = "i2c-gpio";
-        gpios = <&pio 0 120 0>, <&pio 0 121 0>; // SDA, SCL
-        i2c-gpio,sda-open-drain;
-        i2c-gpio,scl-open-drain;
-        i2c-gpio,delay-us = <2>;    // ~100 kHz
-        #address-cells = <1>;
-        #size-cells = <0>;
-    };
-
     dc_12v: dc-12v {
         compatible = "regulator-fixed";
         regulator-name = "dc_12v";
@@ -673,6 +663,16 @@
 &i2c1 {
     status = "okay";
     clock-frequency = <100000>;
+};
+
+&i2c3 {
+    compatible = "i2c-gpio";
+    gpios = <&pio 0 120 0>, <&pio 0 121 0>; // SDA, SCL
+    i2c-gpio,sda-open-drain;
+    i2c-gpio,scl-open-drain;
+    i2c-gpio,delay-us = <2>;    // ~100 kHz
+    #address-cells = <1>;
+    #size-cells = <0>;
 };
 
 &spi3 {
