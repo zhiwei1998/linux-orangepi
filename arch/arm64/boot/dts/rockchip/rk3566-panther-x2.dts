@@ -154,6 +154,12 @@
         status = "okay";
     };
 
+    i2c2: i2c {
+        compatible = "i2c-gpio";
+        sda-gpios = <&gpioa 120 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+        scl-gpios = <&gpioa 121 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+    };
+
 };
 
 &cpu0 {
@@ -663,17 +669,6 @@
 &i2c1 {
     status = "okay";
     clock-frequency = <100000>;
-};
-
-&i2c2 {
-    status = "okay";
-    compatible = "i2c-gpio";
-    gpios = <&pio 0 120 0>, <&pio 0 121 0>; // SDA, SCL
-    i2c-gpio,sda-open-drain;
-    i2c-gpio,scl-open-drain;
-    i2c-gpio,delay-us = <2>;    // ~100 kHz
-    #address-cells = <1>;
-    #size-cells = <0>;
 };
 
 &spi3 {
