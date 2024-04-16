@@ -665,7 +665,7 @@
     clock-frequency = <100000>;
 };
 
-&i2c3 {
+&i2c2 {
     status = "okay";
     compatible = "i2c-gpio";
     gpios = <&pio 0 120 0>, <&pio 0 121 0>; // SDA, SCL
