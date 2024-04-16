@@ -20,6 +20,21 @@
     model = "Panther X2";
     compatible = "panther,x2", "rockchip,rk3566";
 
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            i2c_gpio: i2c_gpio {
+                compatible = "i2c-gpio";
+                gpios = <&pio 0 120 0>, <&pio 0 121 0>; // SDA, SCL
+                i2c-gpio,sda-open-drain;
+                i2c-gpio,scl-open-drain;
+                i2c-gpio,delay-us = <2>;    // ~100 kHz
+                #address-cells = <1>;
+                #size-cells = <0>;
+            };
+        };
+    };
+
     aliases {
         ethernet0 = &gmac1;
         mmc0 = &sdhci;
@@ -664,27 +679,6 @@
     status = "okay";
     clock-frequency = <100000>;
 };
-
-&i2c2 {
-    status = "okay";
-    clock-frequency = <100000>;
-};
-
-&i2c3 {
-    status = "okay";
-    clock-frequency = <100000>;
-};
-
-&i2c4 {
-    status = "okay";
-    clock-frequency = <100000>;
-};
-
-&i2c5 {
-    status = "okay";
-    clock-frequency = <100000>;
-};
-
 
 &spi3 {
     status = "okay";
