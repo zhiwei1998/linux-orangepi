@@ -154,7 +154,7 @@
         status = "okay";
     };
 
-    i2c2: i2c {
+    i2c6: i2c {
         compatible = "i2c-gpio";
         sda-gpios = <&gpioa 120 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
         scl-gpios = <&gpioa 121 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
