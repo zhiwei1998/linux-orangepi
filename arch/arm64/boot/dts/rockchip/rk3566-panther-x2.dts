@@ -154,12 +154,6 @@
         status = "okay";
     };
 
-    i2c6: i2c {
-        compatible = "i2c-gpio";
-        sda-gpios = <&gpioa 120 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-        scl-gpios = <&gpioa 121 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-    };
-
 };
 
 &cpu0 {
@@ -672,18 +666,25 @@
 };
 
 &spi3 {
+    pinctrl-names = "default";
+    pinctrl-0 = <&spi3_pins>;
     status = "okay";
-    //assigned-clock-rates = <200000000>; //默认不用配置，SPI 设备工作时钟
-    max-freq = <48000000>; /* spi internal clk, don't modify */
-    //dma-names = "tx","rx"; //使能DMA模式
-    //rx-sample-delay-ns = <10>; //默认不用配置，读采样延时
-    spi_dev@0 {
-        compatible = "rockchip,spidev";
+
+    lcd@0 {
+        compatible = "sitronix,st7789v";
         reg = <0>;
-        spi-max-frequency = <12000000>;
-        spi-lsb-first; //IO 先传输 lsb
+        spi-max-frequency = <32000000>;
+        rotate = <270>;
+        fps = <60>;
+        bgr;
+        reset-gpios = <&gpio3 120 GPIO_ACTIVE_LOW>;
+        dc-gpios = <&gpio3 121 GPIO_ACTIVE_HIGH>;
+        cs-gpios = <&spi3_cs>;
+        vcc-supply = <&reg_5p0v>;
+        backlight = <&backlight>;
     };
 };
+
 
 // video output
 
