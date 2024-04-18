@@ -666,22 +666,23 @@
 };
 
 &spi3 {
-    pinctrl-names = "default";
-    pinctrl-0 = <&spi3_pins>;
     status = "okay";
-
-    lcd@0 {
+    pinctrl-names = "default";
+    pinctrl-0 = <&spi3m1_cs0 &spi3m1_pins >;
+    //	pinctrl-1 = <&spi3m1_cs0 &spi3m1_pins_hs>;
+    st7789v@0 {
+        status = "okay";
         compatible = "sitronix,st7789v";
         reg = <0>;
-        spi-max-frequency = <32000000>;
-        rotate = <270>;
-        fps = <60>;
+        spi-max-frequency = <12000000>;
         bgr;
-        reset-gpios = <&gpio3 120 GPIO_ACTIVE_LOW>;
-        dc-gpios = <&gpio3 121 GPIO_ACTIVE_HIGH>;
-        cs-gpios = <&spi3_cs>;
-        vcc-supply = <&reg_5p0v>;
-        backlight = <&backlight>;
+        fps = <30>;
+        rotate = <90>;
+        buswidth = <8>;
+        dc-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+        reset-gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_LOW>;
+        led-gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_LOW>;
+        debug = <0>; //等级0～7 越高信息越多
     };
 };
 
