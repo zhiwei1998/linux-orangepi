@@ -25,7 +25,6 @@
         mmc0 = &sdhci;
         mmc1 = &sdmmc0;
         mmc2 = &sdmmc1;
-        gpio5 = &gpio-controller;
     };
 
     chosen: chosen {
