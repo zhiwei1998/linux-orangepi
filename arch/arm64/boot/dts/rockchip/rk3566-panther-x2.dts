@@ -661,7 +661,27 @@
 
 &i2c1 {
     status = "okay";
-    clock-frequency = <100000>;
+    clock-frequency = <400000>;
+};
+
+&i2c2 {
+    status = "okay";
+    clock-frequency = <400000>;
+};
+
+&i2c3 {
+    status = "okay";
+    clock-frequency = <400000>;
+};
+
+&i2c4 {
+    status = "okay";
+    clock-frequency = <400000>;
+};
+
+&i2c5 {
+    status = "okay";
+    clock-frequency = <400000>;
 };
 
 &spi3 {
