@@ -645,8 +645,8 @@
 
 &i2c2 {
     compatible = "i2c-gpio";
-    gpios = <&gpio5 12 GPIO_ACTIVE_HIGH>, /* sda */
-            <&gpio5 13 GPIO_ACTIVE_HIGH>; /* scl */
+    gpios = <&gpio4 12 GPIO_ACTIVE_HIGH>, /* sda */
+            <&gpio4 13 GPIO_ACTIVE_HIGH>; /* scl */
     i2c-gpio,delay-us = <2>; /* ~100 kHz */
     #address-cells = <1>;
     #size-cells = <0>;
