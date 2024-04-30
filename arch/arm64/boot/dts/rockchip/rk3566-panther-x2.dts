@@ -643,13 +643,25 @@
     clock-frequency = <400000>;
 };
 
-&i2c2 {
-    status = "okay";
-    clock-frequency = <400000>;
-};
-
 &spi3 {
-    status = "disabled";
+    status = "okay";
+    pinctrl-names = "default";
+    pinctrl-0 = <&spi3m1_cs0 &spi3m1_pins >;
+    //	pinctrl-1 = <&spi3m1_cs0 &spi3m1_pins_hs>;
+    st7789v@0 {
+        status = "okay";
+        compatible = "sitronix,st7789v";
+        reg = <0>;
+        spi-max-frequency = <12000000>;
+        bgr;
+        fps = <30>;
+        rotate = <90>;
+        buswidth = <8>;
+        dc-gpios = <&gpio3 28 GPIO_ACTIVE_HIGH>;
+        reset-gpios = <&gpio3 29 GPIO_ACTIVE_LOW>;
+        led-gpios = <&gpio4 12 GPIO_ACTIVE_HIGH>;
+        debug = <0>; //等级0～7 越高信息越多
+    };
 };
 
 
