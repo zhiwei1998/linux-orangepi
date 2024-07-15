@@ -12,8 +12,8 @@
 #include "rk3568-linux.dtsi"
 
 / {
-    model = "Rockchip RK3568 HummingBird-4";
-	compatible = "rockchip,HummingBird-4", "rockchip,rk3568";
+    model = "HummingBird-4";
+	compatible = "rockchip,rk3568-HummingBird-4", "rockchip,rk3568";
 
 	chosen: chosen {
 		bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=ttyS2,1500000 mem_freq_limit=1056";
