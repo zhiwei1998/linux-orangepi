@@ -388,11 +388,6 @@
         status = "okay";
 };
 
-
-&h265e {
-        status = "okay";
-};
-
 &rkvdec {
         status = "okay";
 };
