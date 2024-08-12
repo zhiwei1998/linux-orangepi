@@ -220,11 +220,6 @@
 	assigned-clocks = <&cru SCLK_MAC2PHY>;
 	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
 	status = "okay";
-
-	gmac_reset: gmac-reset {
-		rockchip,pins =
-				<RK_GPIO1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-	};
 };
 
 &gpu {
