@@ -206,8 +206,7 @@
 	assigned-clocks = <&cru SCLK_MAC2IO>;
 	assigned-clock-parents = <&gmac_clkin>;
 	pinctrl-names = "default";
-	pinctrl-0 = <&rmiim1_pins &gmac_reset>;
-	//pinctrl-0 = <&gmac_reset>;
+	pinctrl-0 = <&gmac_reset>;
 	tx_delay = <0x28>;
 	rx_delay = <0x16>;
 };
