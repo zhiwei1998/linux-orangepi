@@ -195,19 +195,21 @@
 };
 
 &gmac2io {
-	phy-supply = <&vcc_phy>;
-	phy-mode = "rgmii";
-	clock_in_out = "input";
-	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+	phy-suplly = <&vcc_phy>;
+	phy-mode = "rmii";
+	clock_in_out = "output";
+	//snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
 	snps,reset-active-low;
-	snps,reset-delays-us = <0 10000 50000>;
-	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
-	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
+	snps,force_thresh_dma_mode;
+	snps,reset-delay-us = <0 30000 50000>;
+	//assigned-clocks = <&cru SCLK_MAC2IO_REFOUT>;
+	assigned-clocks = <&cru SCLK_MAC2IO>;
+	assigned-clock-parents = <&gmac_clkin>;
 	pinctrl-names = "default";
-	pinctrl-0 = <&rgmiim1_pins>;
-	tx_delay = <0x26>;
-	rx_delay = <0x11>;
-	status = "disabled";
+	pinctrl-0 = <&rmiim1_pins &gmac_reset>;
+	//pinctrl-0 = <&gmac_reset>;
+	tx_delay = <0x28>;
+	rx_delay = <0x16>;
 };
 
 &gmac2phy {
@@ -218,6 +220,11 @@
 	assigned-clocks = <&cru SCLK_MAC2PHY>;
 	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
 	status = "okay";
+
+	gmac_reset: gmac-reset {
+		rockchip,pins =
+				<RK_GPIO1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+	};
 };
 
 &gpu {
