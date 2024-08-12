@@ -209,6 +209,7 @@
 //	pinctrl-0 = <&gmac_reset>;
 	tx_delay = <0x28>;
 	rx_delay = <0x16>;
+	status = "okay";
 };
 
 &gmac2phy {
