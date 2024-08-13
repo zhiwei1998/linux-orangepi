@@ -18,7 +18,7 @@
 	};
 
 	chosen {
-		bootargs = "earlycon=uart8250,mmio32,0xff130000 swiotlb=1 kpti=0 console=ttyFIQ0 root=PARTUUID=614e0000-0000 rw rootwait coherent_pool=1m";
+		bootargs = "earlycon=uart8250,mmio32,0xff130000 swiotlb=1 kpti=0 console=ttyFIQ0 coherent_pool=1m";
 	};
 
 	fiq-debugger {
@@ -198,15 +198,12 @@
 	phy-suplly = <&vcc_phy>;
 	phy-mode = "rmii";
 	clock_in_out = "output";
-	//snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
 	snps,reset-active-low;
 	snps,force_thresh_dma_mode;
 	snps,reset-delay-us = <0 30000 50000>;
-	//assigned-clocks = <&cru SCLK_MAC2IO_REFOUT>;
 	assigned-clocks = <&cru SCLK_MAC2IO>;
 	assigned-clock-parents = <&gmac_clkin>;
 	pinctrl-names = "default";
-//	pinctrl-0 = <&gmac_reset>;
 	tx_delay = <0x28>;
 	rx_delay = <0x16>;
 	status = "okay";

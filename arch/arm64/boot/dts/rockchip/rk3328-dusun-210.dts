@@ -2,7 +2,7 @@
 
 / {
         chosen {
-                bootargs = "earlycon=uart8250,mmio32,0xff130000 swiotlb=1 kpti=0 console=ttyFIQ0 root=PARTUUID=614e0000-0000 rw rootwait coherent_pool=1m";
+			stdout-path = "serial2:1500000n8";
         };
 
 /*
