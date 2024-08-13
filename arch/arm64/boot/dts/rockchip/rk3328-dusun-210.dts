@@ -191,26 +191,6 @@
 
 &i2c0 {
 	status = "okay";
-	charger: bq25895@6A {
-        compatible = "ti,bq25890";
-        reg = <0x6A>;
-        bq25890_irq-gpios = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-
-        ti,battery-regulation-voltage = <4256000>;
-        ti,charge-current = <1088000>;
-        ti,termination-current = <128000>;
-        ti,precharge-current = <128000>;
-        ti,minimum-sys-voltage = <3000000>;
-        ti,boost-voltage = <5126000>;
-        ti,boost-max-current = <1400000>;
-
-        ti,use-ilim-pin;
-        ti,thermal-regulation-threshold = <100>;
-	};
-	battery: bq27546@55 {
-		compatible = "ti,bq27546";
-		reg = <0x55>;
-	};
 /*
 	tm1929@23 {
 		status = "okay";
